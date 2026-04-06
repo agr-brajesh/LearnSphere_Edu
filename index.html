@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnSphere — Discover. Learn. Master.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f3f0;
+    --surface: #ffffff;
+    --surface-2: #f9f8f6;
+    --blue: #4a6cf7;
+    --blue-light: #e8edff;
+    --rose: #c4785a;
+    --rose-light: #f5ede8;
+    --text: #1a1a2e;
+    --text-2: #5c5c7a;
+    --text-3: #9999b3;
+    --border: rgba(0,0,0,0.07);
+    --shadow: 0 4px 24px rgba(0,0,0,0.07);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(244,243,240,0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, var(--blue) 0%, #7c9bff 100%);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 16px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-2);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--blue);
+    background: var(--blue-light);
+  }
+
+  /* ─── HERO ─── */
+  #home {
+    padding: 96px 48px 72px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text-2);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: #3a5ce0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(74,108,247,0.3);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-2);
+    border: 1.5px solid var(--border);
+    padding: 13px 24px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat { }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    height: 360px;
+  }
+
+  .hero-card {
+    position: absolute;
+    background: var(--surface);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    padding: 24px;
+    width: 300px;
+  }
+
+  .hero-card:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%) rotate(-3deg); opacity: 0.5; }
+  .hero-card:nth-child(2) { top: 20px; left: 50%; transform: translateX(-50%) rotate(1deg); opacity: 0.7; }
+  .hero-card:nth-child(3) { top: 40px; left: 50%; transform: translateX(-50%) rotate(0deg); z-index: 3; }
+
+  .hero-card-badge {
+    display: inline-block;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+
+  .hero-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .hero-card-meta {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-bottom: 16px;
+  }
+
+  .hero-card-bar {
+    height: 4px;
+    background: var(--blue-light);
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .hero-card-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), #7c9bff);
+    border-radius: 4px;
+    width: 68%;
+  }
+
+  .hero-card-progress {
+    font-size: 12px;
+    color: var(--text-3);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ─── FEATURES ─── */
+  #mission {
+    background: var(--surface);
+    padding: 80px 48px;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 48px;
+    max-width: 600px;
+    line-height: 1.15;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .feature-icon.blue { background: var(--blue-light); }
+  .feature-icon.rose { background: var(--rose-light); }
+
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+
+  .feature-line {
+    height: 2px;
+    width: 32px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+
+  .feature-line.blue { background: var(--blue); }
+  .feature-line.rose { background: var(--rose); }
+
+  /* ─── COURSES ─── */
+  #courses {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .courses-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .search-sort-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-3);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  #searchInput:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,108,247,0.1);
+  }
+
+  #searchInput::placeholder { color: var(--text-3); }
+
+  #sortSelect {
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    min-width: 160px;
+  }
+
+  #sortSelect:focus { border-color: var(--blue); }
+
+  .filter-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .filter-tag {
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-tag:hover { border-color: var(--blue); color: var(--blue); }
+
+  .filter-tag.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
+  }
+
+  .courses-count {
+    font-size: 14px;
+    color: var(--text-3);
+    margin-bottom: 24px;
+  }
+
+  .courses-count span { color: var(--text); font-weight: 600; }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  /* ─── COURSE CARD ─── */
+  .course-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .course-card-img {
+    height: 140px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    flex-shrink: 0;
+  }
+
+  .course-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .course-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-webdev { background: var(--blue-light); color: var(--blue); }
+  .badge-datascience { background: #e8f5e9; color: #2e7d32; }
+  .badge-design { background: var(--rose-light); color: var(--rose); }
+  .badge-marketing { background: #fff3e0; color: #e65100; }
+  .badge-business { background: #f3e5f5; color: #6a1b9a; }
+
+  .course-save-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-3);
+    transition: all 0.2s;
+    line-height: 1;
+    padding: 2px;
+  }
+
+  .course-save-btn:hover { color: #e53935; transform: scale(1.15); }
+  .course-save-btn.saved { color: #e53935; }
+
+  .course-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .course-instructor {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+
+  .course-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .stars { color: #f59e0b; font-size: 13px; }
+
+  .rating-num {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .course-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-3);
+    margin-bottom: 16px;
+  }
+
+  .course-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .course-card-footer {
+    padding: 0 20px 20px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-modules {
+    flex: 1;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border);
+    color: var(--text-2);
+    padding: 9px 14px;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .btn-modules:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-modules.open { background: var(--blue-light); border-color: var(--blue); color: var(--blue); }
+
+  .btn-enroll {
+    flex: 1;
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-enroll:hover {
+    background: #3a5ce0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74,108,247,0.3);
+  }
+
+  /* ─── ACCORDION ─── */
+  .accordion-panel {
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .accordion-panel.open { max-height: 500px; }
+
+  .accordion-inner {
+    padding: 16px 20px;
+  }
+
+  .module-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .module-item:last-child { border-bottom: none; }
+
+  .module-name { color: var(--text-2); }
+
+  .module-duration {
+    color: var(--text-3);
+    font-size: 12px;
+    white-space: nowrap;
+    margin-left: 12px;
+  }
+
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-3);
+  }
+
+  .no-results-icon { font-size: 48px; margin-bottom: 16px; }
+  .no-results-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-2); margin-bottom: 8px; }
+  .no-results-text { font-size: 14px; }
+
+  /* ─── SAVED ─── */
+  #saved {
+    background: var(--surface);
+    padding: 80px 48px;
+  }
+
+  .saved-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .saved-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.2s;
+  }
+
+  .saved-card:hover { box-shadow: var(--shadow); }
+
+  .saved-card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .saved-card-info { flex: 1; min-width: 0; }
+
+  .saved-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .saved-card-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+
+  .saved-remove {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    transition: color 0.2s;
+  }
+
+  .saved-remove:hover { color: #e53935; }
+
+  .saved-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-3);
+  }
+
+  .saved-empty-icon { font-size: 40px; margin-bottom: 12px; }
+  .saved-empty-text { font-size: 14px; }
+
+  /* ─── ABOUT ─── */
+  #about {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--text-2);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .tech-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+  }
+
+  .tech-pill-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+
+  .impact-cards { display: flex; flex-direction: column; gap: 16px; }
+
+  .impact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .impact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--blue);
+    min-width: 90px;
+  }
+
+  .impact-desc {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 48px;
+    font-size: 13px;
+  }
+
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 36px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow-lg);
+    animation: modalIn 0.3s ease;
+    position: relative;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 18px; right: 20px;
+    background: var(--surface-2);
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-2);
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .modal-close:hover { background: #fee2e2; color: #e53935; }
+
+  .modal-course-badge {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .modal-sub { font-size: 13px; color: var(--text-3); margin-bottom: 24px; }
+
+  .modal-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 24px;
+  }
+
+  .form-row { margin-bottom: 16px; }
+
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+    margin-bottom: 6px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--surface);
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(74,108,247,0.1); }
+  .form-input.error { border-color: #e53935; }
+
+  .form-error {
+    font-size: 12px;
+    color: #e53935;
+    margin-top: 4px;
+    display: none;
+  }
+
+  .form-row.has-error .form-error { display: block; }
+  .form-row.has-error .form-input { border-color: #e53935; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .modal-submit {
+    width: 100%;
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .modal-submit:hover { background: #3a5ce0; box-shadow: 0 6px 20px rgba(74,108,247,0.3); }
+
+  .modal-success {
+    text-align: center;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .modal-success-icon {
+    font-size: 52px;
+    margin-bottom: 16px;
+    animation: bounceIn 0.5s ease;
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  .modal-success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .modal-success-text { font-size: 14px; color: var(--text-2); }
+
+  /* ─── TOAST ─── */
+  #toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--text);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2000;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  #toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .courses-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    #home { grid-template-columns: 1fr; gap: 40px; padding: 60px 32px 48px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    #home, #courses, #about { padding: 48px 20px; }
+    #mission, #saved { padding: 48px 20px; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; }
+    footer { padding: 24px 20px; }
+  }
+
+  /* scroll-spy highlight */
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-icon">◈</div>
+    <span class="nav-logo-text">LearnSphere</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="nav-link active">Home</a></li>
+    <li><a href="#courses" class="nav-link">Courses</a></li>
+    <li><a href="#saved" class="nav-link">Saved</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-content">
+    <div class="hero-label">Live on GitHub Pages</div>
+    <h1 class="hero-title">
+      Learn without<br>
+      <em>limits.</em>
+    </h1>
+    <p class="hero-desc">
+      A frictionless, interactive learning platform engineered for seamless discovery, deep exploration, and dynamic engagement — all in your browser.
+    </p>
+    <div class="hero-actions">
+      <a href="#courses" class="btn-primary">Explore Courses</a>
+      <a href="#about" class="btn-ghost">Our Mission</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">1.5M+</div>
+        <div class="stat-label">Active Learners</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">250+</div>
+        <div class="stat-label">Accredited Partners</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Courses Available</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hero-card">
+        <div class="hero-card-badge">Design</div>
+        <div class="hero-card-title">UX/UI Fundamentals</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-badge">Data Science</div>
+        <div class="hero-card-title">ML Engineering</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-badge">Web Development</div>
+        <div class="hero-card-title">Full-Stack Mastery</div>
+        <div class="hero-card-meta">Instructor: Prof. Marcus Chen · 10 Weeks</div>
+        <div class="hero-card-bar"><div class="hero-card-bar-fill"></div></div>
+        <div class="hero-card-progress"><span>68% complete</span><span>★ 4.9</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- MISSION / FEATURES -->
+<section id="mission">
+  <div class="section-inner">
+    <div class="section-tag">Why LearnSphere</div>
+    <h2 class="section-title">Engineered for the modern, self-paced learner</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon blue">🎯</div>
+        <div class="feature-line blue"></div>
+        <div class="feature-title">Goal-Oriented Learning</div>
+        <p class="feature-desc">Curated pathways designed to move students from discovery to mastery without friction.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon rose">👩‍🏫</div>
+        <div class="feature-line rose"></div>
+        <div class="feature-title">Expert Instructors</div>
+        <p class="feature-desc">Industry-leading insights delivered directly to your browser by top practitioners.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon blue">⏱️</div>
+        <div class="feature-line blue"></div>
+        <div class="feature-title">Self-Paced Exploration</div>
+        <p class="feature-desc">Architecture that supports immediate engagement or bookmarking for later study.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon rose">🏆</div>
+        <div class="feature-line rose"></div>
+        <div class="feature-title">Verified Certificates</div>
+        <p class="feature-desc">Tangible milestones built into the user journey — recognizable and shareable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="courses-header">
+    <div>
+      <div class="section-tag">Catalogue</div>
+      <h2 class="section-title" style="margin-bottom:0">All Courses</h2>
+    </div>
+  </div>
+
+  <div class="search-sort-row">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search courses, skills, or instructors…" oninput="filterCourses()">
+    </div>
+    <select id="sortSelect" onchange="filterCourses()">
+      <option value="featured">⭐ Featured</option>
+      <option value="toprated">🏅 Top Rated</option>
+      <option value="duration">⏱️ Duration</option>
+      <option value="az">🔤 A–Z</option>
+    </select>
+  </div>
+
+  <div class="filter-tags" id="filterTags">
+    <button class="filter-tag active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-tag" onclick="setFilter('Web Development', this)">Web Development</button>
+    <button class="filter-tag" onclick="setFilter('Data Science', this)">Data Science</button>
+    <button class="filter-tag" onclick="setFilter('Design', this)">Design</button>
+    <button class="filter-tag" onclick="setFilter('Marketing', this)">Marketing</button>
+    <button class="filter-tag" onclick="setFilter('Business', this)">Business</button>
+  </div>
+
+  <div class="courses-count" id="coursesCount"><span>12</span> courses found</div>
+
+  <div class="courses-grid" id="coursesGrid"></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SAVED -->
+<section id="saved">
+  <div class="section-inner">
+    <div class="section-tag">Bookmarked</div>
+    <h2 class="section-title" style="margin-bottom:0">Saved Courses</h2>
+    <div class="saved-grid" id="savedGrid"></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-tag">About</div>
+      <h2 class="section-title">Redefining educational access through technology</h2>
+      <p>LearnSphere is dedicated to integrating state-of-the-art technology with human-centric design, enabling learners to achieve their professional aspirations through flexible, high-quality coursework.</p>
+      <p>Built entirely with fundamental web technologies — no heavy frameworks, no bloated dependencies — every technology choice was mapped directly to a specific user experience upgrade.</p>
+      <div class="tech-pills">
+        <div class="tech-pill"><div class="tech-pill-dot" style="background:var(--blue)"></div>HTML5</div>
+        <div class="tech-pill"><div class="tech-pill-dot" style="background:var(--rose)"></div>CSS3 Flexbox/Grid</div>
+        <div class="tech-pill"><div class="tech-pill-dot" style="background:#f59e0b"></div>Vanilla JavaScript</div>
+        <div class="tech-pill"><div class="tech-pill-dot" style="background:#2e7d32"></div>localStorage API</div>
+        <div class="tech-pill"><div class="tech-pill-dot" style="background:#6a1b9a"></div>Google Fonts</div>
+      </div>
+    </div>
+    <div class="impact-cards">
+      <div class="impact-card">
+        <div class="impact-num">1.5M+</div>
+        <div class="impact-desc">Active learners across 120+ countries accessing world-class education.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">250+</div>
+        <div class="impact-desc">Accredited industry partners providing verified certification pathways.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">4.8★</div>
+        <div class="impact-desc">Average learner satisfaction score across all published courses.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">Zero</div>
+        <div class="impact-desc">External dependencies. Runs natively in any modern browser, instantly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Built by <strong>Brajesh Agrawal</strong> &nbsp;·&nbsp; Web Programming Project — 2025 &nbsp;·&nbsp; LearnSphere
+</footer>
+
+<!-- ENROLLMENT MODAL -->
+<div class="modal-overlay" id="enrollModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalFormContent">
+      <div class="modal-course-badge" id="modalBadge"></div>
+      <h2 class="modal-title" id="modalTitle">Enroll Now</h2>
+      <p class="modal-sub" id="modalSub">Complete your enrollment in under a minute.</p>
+      <div class="modal-divider"></div>
+      <div class="form-grid">
+        <div class="form-row" id="nameRow">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" id="enrollName" placeholder="Brajesh Agrawal">
+          <div class="form-error">Please enter your full name.</div>
+        </div>
+        <div class="form-row" id="phoneRow">
+          <label class="form-label">Phone</label>
+          <input type="text" class="form-input" id="enrollPhone" placeholder="+91 9876543210">
+          <div class="form-error">Please enter a valid phone number.</div>
+        </div>
+      </div>
+      <div class="form-row" id="emailRow">
+        <label class="form-label">Email Address</label>
+        <input type="text" class="form-input" id="enrollEmail" placeholder="you@example.com">
+        <div class="form-error">Please enter a valid email address.</div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row" id="dateRow">
+          <label class="form-label">Start Date</label>
+          <input type="date" class="form-input" id="enrollDate">
+          <div class="form-error">Please select a start date.</div>
+        </div>
+        <div class="form-row" id="expRow">
+          <label class="form-label">Experience Level</label>
+          <select class="form-input" id="enrollExp">
+            <option value="">Select level…</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+          <div class="form-error">Please select your experience level.</div>
+        </div>
+      </div>
+      <button class="modal-submit" onclick="submitEnrollment()">Confirm Enrollment →</button>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon">🎉</div>
+      <div class="modal-success-title">You're Enrolled!</div>
+      <p class="modal-success-text">Welcome aboard. Your learning journey begins soon. Check your email for confirmation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const COURSES = [
+  {
+    id: 1, title: "Full-Stack Web Development Bootcamp",
+    instructor: "Prof. Marcus Chen", category: "Web Development",
+    rating: 4.9, duration: "10 Weeks", difficulty: "Intermediate",
+    featured: true, desc: "Master HTML, CSS, JavaScript, Node.js, and deploy production-grade applications from scratch.",
+    emoji: "💻", bg: "#eef1ff",
+    modules: [
+      { name: "HTML5 & Semantic Markup", dur: "2h 30m" },
+      { name: "CSS3, Flexbox & Grid Mastery", dur: "3h 0m" },
+      { name: "Vanilla JavaScript & DOM", dur: "4h 15m" },
+      { name: "Node.js & REST APIs", dur: "3h 30m" },
+      { name: "Deployment & DevOps Basics", dur: "2h 0m" },
+    ]
+  },
+  {
+    id: 2, title: "Machine Learning Engineering",
+    instructor: "Dr. Priya Nair", category: "Data Science",
+    rating: 4.8, duration: "12 Weeks", difficulty: "Advanced",
+    featured: true, desc: "From linear regression to neural networks — build, train, and deploy ML models end to end.",
+    emoji: "🤖", bg: "#e8f5e9",
+    modules: [
+      { name: "Python for ML Foundations", dur: "2h 0m" },
+      { name: "Supervised Learning Algorithms", dur: "3h 45m" },
+      { name: "Neural Networks with PyTorch", dur: "4h 0m" },
+      { name: "Model Evaluation & Tuning", dur: "2h 30m" },
+      { name: "MLOps & Deployment", dur: "3h 0m" },
+    ]
+  },
+  {
+    id: 3, title: "UX/UI Design Fundamentals",
+    instructor: "Dr. Anya Sharma", category: "Design",
+    rating: 4.8, duration: "8 Weeks", difficulty: "Intermediate",
+    featured: true, desc: "Master the principles of user experience design through practical case studies and real projects.",
+    emoji: "🎨", bg: "#fdf0eb",
+    modules: [
+      { name: "Introduction to UX Principles", dur: "1h 30m" },
+      { name: "User Research Methods", dur: "2h 15m" },
+      { name: "Information Architecture", dur: "1h 45m" },
+      { name: "Wireframing & Prototyping", dur: "3h 0m" },
+      { name: "Visual Design for UI", dur: "2h 0m" },
+    ]
+  },
+  {
+    id: 4, title: "Digital Marketing Mastery",
+    instructor: "Sarah Williams", category: "Marketing",
+    rating: 4.7, duration: "6 Weeks", difficulty: "Beginner",
+    featured: false, desc: "SEO, social media, paid ads, and email campaigns — grow any business online with proven strategies.",
+    emoji: "📈", bg: "#fff8e1",
+    modules: [
+      { name: "SEO & Content Strategy", dur: "2h 0m" },
+      { name: "Social Media Marketing", dur: "1h 45m" },
+      { name: "Google & Meta Ads", dur: "2h 30m" },
+      { name: "Email Marketing Automation", dur: "1h 30m" },
+    ]
+  },
+  {
+    id: 5, title: "Business Strategy & Entrepreneurship",
+    instructor: "Prof. James Miller", category: "Business",
+    rating: 4.6, duration: "8 Weeks", difficulty: "Intermediate",
+    featured: false, desc: "Develop a strategic mindset, build business models, and pitch with confidence to investors.",
+    emoji: "🏢", bg: "#f3e5f5",
+    modules: [
+      { name: "Business Model Canvas", dur: "2h 0m" },
+      { name: "Market Analysis & Positioning", dur: "2h 30m" },
+      { name: "Financial Modelling Basics", dur: "2h 0m" },
+      { name: "Pitch Deck Masterclass", dur: "1h 45m" },
+    ]
+  },
+  {
+    id: 6, title: "React & Next.js Development",
+    instructor: "Alex Kim", category: "Web Development",
+    rating: 4.9, duration: "9 Weeks", difficulty: "Intermediate",
+    featured: true, desc: "Build fast, scalable React apps and server-rendered Next.js sites with modern best practices.",
+    emoji: "⚛️", bg: "#eef1ff",
+    modules: [
+      { name: "React Fundamentals & Hooks", dur: "3h 0m" },
+      { name: "State Management with Zustand", dur: "2h 15m" },
+      { name: "Next.js App Router", dur: "2h 45m" },
+      { name: "API Routes & Auth", dur: "2h 0m" },
+      { name: "Deployment on Vercel", dur: "1h 30m" },
+    ]
+  },
+  {
+    id: 7, title: "Data Visualization with D3.js",
+    instructor: "Dr. Lisa Park", category: "Data Science",
+    rating: 4.7, duration: "6 Weeks", difficulty: "Intermediate",
+    featured: false, desc: "Transform raw datasets into stunning, interactive visualizations using D3.js and SVG.",
+    emoji: "📊", bg: "#e8f5e9",
+    modules: [
+      { name: "SVG Foundations", dur: "1h 45m" },
+      { name: "D3 Scales & Axes", dur: "2h 0m" },
+      { name: "Interactive Charts", dur: "2h 30m" },
+      { name: "Maps & Geo Visualizations", dur: "2h 0m" },
+    ]
+  },
+  {
+    id: 8, title: "Brand Identity & Graphic Design",
+    instructor: "Maria Gonzalez", category: "Design",
+    rating: 4.5, duration: "7 Weeks", difficulty: "Beginner",
+    featured: false, desc: "Create powerful brand identities — from logo design to full style guides using Figma and Illustrator.",
+    emoji: "🖋️", bg: "#fdf0eb",
+    modules: [
+      { name: "Design Principles & Theory", dur: "2h 0m" },
+      { name: "Logo Design in Figma", dur: "2h 30m" },
+      { name: "Typography Mastery", dur: "1h 45m" },
+      { name: "Building a Brand Style Guide", dur: "2h 0m" },
+    ]
+  },
+  {
+    id: 9, title: "Growth Hacking for Startups",
+    instructor: "Tom Anderson", category: "Marketing",
+    rating: 4.6, duration: "5 Weeks", difficulty: "Intermediate",
+    featured: false, desc: "Unlock viral loops, referral programs, and data-driven growth tactics used by the fastest-growing startups.",
+    emoji: "🚀", bg: "#fff8e1",
+    modules: [
+      { name: "Growth Mindset & Metrics", dur: "1h 30m" },
+      { name: "Viral & Referral Loops", dur: "2h 0m" },
+      { name: "A/B Testing & Experimentation", dur: "1h 45m" },
+      { name: "Retention & Churn Reduction", dur: "1h 30m" },
+    ]
+  },
+  {
+    id: 10, title: "Flutter Mobile App Development",
+    instructor: "Brajesh Agrawal", category: "Web Development",
+    rating: 4.9, duration: "11 Weeks", difficulty: "Intermediate",
+    featured: true, desc: "Build cross-platform iOS & Android apps with Flutter — from layouts to state management and deployment.",
+    emoji: "📱", bg: "#eef1ff",
+    modules: [
+      { name: "Dart Language Essentials", dur: "2h 0m" },
+      { name: "Flutter Widgets & Layouts", dur: "3h 0m" },
+      { name: "State Management (Riverpod)", dur: "2h 30m" },
+      { name: "REST APIs & Firebase", dur: "2h 45m" },
+      { name: "App Store Deployment", dur: "1h 30m" },
+    ]
+  },
+  {
+    id: 11, title: "Financial Modelling & Valuation",
+    instructor: "Dr. Robert Chen", category: "Business",
+    rating: 4.7, duration: "9 Weeks", difficulty: "Advanced",
+    featured: false, desc: "Build DCF models, comparable analysis, and LBO models used by top investment banks and PE firms.",
+    emoji: "💰", bg: "#f3e5f5",
+    modules: [
+      { name: "Excel for Finance", dur: "2h 15m" },
+      { name: "DCF Valuation Models", dur: "3h 0m" },
+      { name: "Comparable Company Analysis", dur: "2h 30m" },
+      { name: "LBO Modelling", dur: "2h 45m" },
+    ]
+  },
+  {
+    id: 12, title: "Python for Data Analysis",
+    instructor: "Dr. Emily Zhang", category: "Data Science",
+    rating: 4.8, duration: "7 Weeks", difficulty: "Beginner",
+    featured: true, desc: "Pandas, NumPy, Matplotlib — manipulate and visualize real-world datasets like a professional data analyst.",
+    emoji: "🐍", bg: "#e8f5e9",
+    modules: [
+      { name: "Python Basics & Data Types", dur: "2h 0m" },
+      { name: "NumPy & Array Operations", dur: "1h 45m" },
+      { name: "Pandas for Data Wrangling", dur: "2h 30m" },
+      { name: "Matplotlib & Seaborn", dur: "2h 0m" },
+      { name: "Capstone Project", dur: "3h 0m" },
+    ]
+  }
+];
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+let activeFilter = 'all';
+let savedCourses = JSON.parse(localStorage.getItem('ls_saved') || '[]');
+let openAccordions = new Set();
+let enrollCourseId = null;
+
+// ─── UTILS ──────────────────────────────────────────────────────────────────
+function stars(r) {
+  const full = Math.floor(r);
+  const half = r % 1 >= 0.5 ? 1 : 0;
+  return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(5 - full - half);
+}
+
+function badgeClass(cat) {
+  const map = { 'Web Development': 'webdev', 'Data Science': 'datascience', 'Design': 'design', 'Marketing': 'marketing', 'Business': 'business' };
+  return 'badge-' + (map[cat] || 'webdev');
+}
+
+function isSaved(id) { return savedCourses.some(c => c.id === id); }
+
+function savePersist() { localStorage.setItem('ls_saved', JSON.stringify(savedCourses)); }
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─── RENDER COURSES ──────────────────────────────────────────────────────────
+function renderCourses() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  const sort = document.getElementById('sortSelect').value;
+
+  let filtered = COURSES.filter(c => {
+    const matchCat = activeFilter === 'all' || c.category === activeFilter;
+    const matchQ = !query || c.title.toLowerCase().includes(query) || c.instructor.toLowerCase().includes(query) || c.category.toLowerCase().includes(query);
+    return matchCat && matchQ;
+  });
+
+  if (sort === 'toprated') filtered.sort((a, b) => b.rating - a.rating);
+  else if (sort === 'duration') filtered.sort((a, b) => parseInt(a.duration) - parseInt(b.duration));
+  else if (sort === 'az') filtered.sort((a, b) => a.title.localeCompare(b.title));
+  else filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+  const grid = document.getElementById('coursesGrid');
+  document.getElementById('coursesCount').innerHTML = `<span>${filtered.length}</span> course${filtered.length !== 1 ? 's' : ''} found`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="no-results"><div class="no-results-icon">🔍</div><div class="no-results-title">No courses found</div><p class="no-results-text">Try a different search term or category filter.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c => {
+    const saved = isSaved(c.id);
+    const accOpen = openAccordions.has(c.id);
+    const modulesHTML = c.modules.map(m => `<div class="module-item"><span class="module-name">${m.name}</span><span class="module-duration">${m.dur}</span></div>`).join('');
+    return `
+    <div class="course-card" id="card-${c.id}">
+      <div class="course-card-img" style="background:${c.bg}">${c.emoji}</div>
+      <div class="course-card-body">
+        <div class="course-card-top">
+          <span class="course-badge ${badgeClass(c.category)}">${c.category}</span>
+          <button class="course-save-btn ${saved ? 'saved' : ''}" onclick="toggleSave(${c.id})" title="${saved ? 'Remove from saved' : 'Save course'}">${saved ? '♥' : '♡'}</button>
+        </div>
+        <div class="course-title">${c.title}</div>
+        <div class="course-instructor">👤 ${c.instructor}</div>
+        <div class="course-rating">
+          <span class="stars">${stars(c.rating)}</span>
+          <span class="rating-num">${c.rating}</span>
+        </div>
+        <div class="course-meta">
+          <span>🕐 ${c.duration}</span>
+          <span>📶 ${c.difficulty}</span>
+        </div>
+        <p class="course-desc">${c.desc}</p>
+      </div>
+      <div class="course-card-footer">
+        <button class="btn-modules ${accOpen ? 'open' : ''}" id="accBtn-${c.id}" onclick="toggleAccordion(${c.id})">
+          ${accOpen ? '▲' : '▼'} Modules
+        </button>
+        <button class="btn-enroll" onclick="openModal(${c.id})">Enroll Now</button>
+      </div>
+      <div class="accordion-panel ${accOpen ? 'open' : ''}" id="acc-${c.id}">
+        <div class="accordion-inner">${modulesHTML}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── FILTER & SORT ───────────────────────────────────────────────────────────
+function setFilter(cat, el) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderCourses();
+}
+
+function filterCourses() { renderCourses(); }
+
+// ─── ACCORDION ───────────────────────────────────────────────────────────────
+function toggleAccordion(id) {
+  if (openAccordions.has(id)) openAccordions.delete(id);
+  else openAccordions.add(id);
+  renderCourses();
+  // scroll to card smoothly
+  setTimeout(() => {
+    const card = document.getElementById('card-' + id);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+
+// ─── SAVE ────────────────────────────────────────────────────────────────────
+function toggleSave(id) {
+  const course = COURSES.find(c => c.id === id);
+  if (isSaved(id)) {
+    savedCourses = savedCourses.filter(c => c.id !== id);
+    showToast(`🔖 Removed from saved`);
+  } else {
+    savedCourses.push(course);
+    showToast(`♥ "${course.title}" saved!`);
+  }
+  savePersist();
+  renderCourses();
+  renderSaved();
+}
+
+function renderSaved() {
+  const grid = document.getElementById('savedGrid');
+  if (savedCourses.length === 0) {
+    grid.innerHTML = `<div class="saved-empty" style="grid-column:1/-1"><div class="saved-empty-icon">🔖</div><p class="saved-empty-text">No saved courses yet. Hit the ♡ icon on any course to bookmark it.</p></div>`;
+    return;
+  }
+  grid.innerHTML = savedCourses.map(c => `
+    <div class="saved-card">
+      <div class="saved-card-icon" style="background:${c.bg}">${c.emoji}</div>
+      <div class="saved-card-info">
+        <div class="saved-card-title">${c.title}</div>
+        <div class="saved-card-meta">${c.instructor} · ${c.duration}</div>
+      </div>
+      <button class="saved-remove" onclick="toggleSave(${c.id})" title="Remove">✕</button>
+    </div>
+  `).join('');
+}
+
+// ─── ENROLLMENT MODAL ────────────────────────────────────────────────────────
+function openModal(id) {
+  enrollCourseId = id;
+  const c = COURSES.find(x => x.id === id);
+  document.getElementById('modalBadge').innerHTML = `<span class="course-badge ${badgeClass(c.category)}">${c.category}</span>`;
+  document.getElementById('modalTitle').textContent = c.title;
+  document.getElementById('modalSub').textContent = `Instructor: ${c.instructor} · ${c.duration} · ${c.difficulty}`;
+  // Reset form
+  document.getElementById('modalFormContent').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  ['enrollName','enrollPhone','enrollEmail','enrollDate','enrollExp'].forEach(id => {
+    document.getElementById(id).value = '';
+    document.getElementById(id).classList.remove('error');
+  });
+  ['nameRow','phoneRow','emailRow','dateRow','expRow'].forEach(id => {
+    document.getElementById(id).classList.remove('has-error');
+  });
+  document.getElementById('enrollModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('enrollModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('enrollModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function validateField(inputId, rowId, check) {
+  const val = document.getElementById(inputId).value.trim();
+  const valid = check(val);
+  document.getElementById(rowId).classList.toggle('has-error', !valid);
+  return valid;
+}
+
+function submitEnrollment() {
+  const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const checks = [
+    validateField('enrollName', 'nameRow', v => v.length >= 2),
+    validateField('enrollPhone', 'phoneRow', v => v.length >= 7),
+    validateField('enrollEmail', 'emailRow', v => emailReg.test(v)),
+    validateField('enrollDate', 'dateRow', v => v !== ''),
+    validateField('enrollExp', 'expRow', v => v !== ''),
+  ];
+  if (checks.every(Boolean)) {
+    document.getElementById('modalFormContent').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+    setTimeout(closeModal, 3000);
+  }
+}
+
+// ─── SCROLL SPY ──────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const sections = ['home','courses','saved','about'];
+  let current = 'home';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+renderCourses();
+renderSaved();
+</script>
+</body>
+</html>
