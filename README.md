@@ -2,7 +2,7 @@
 
 > A frictionless, interactive online learning platform engineered for seamless discovery and dynamic user engagement.
 
-**Built by Brajesh Agrawal · Web Programming Project — 2025**
+**Built by Brajesh Agrawal · Web Programming Project — 2026**
 
 🔗 **Live Demo:** https://agr-brajesh.github.io/LearnSphere_Edu/
 
