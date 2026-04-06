@@ -4,7 +4,7 @@
 
 **Built by Brajesh Agrawal · Web Programming Project — 2025**
 
-🔗 **Live Demo:** [agr-brajesh.github.io/LearnSphere](https://agr-brajesh.github.io/LearnSphere/)
+🔗 **Live Demo:** https://agr-brajesh.github.io/LearnSphere_Edu/
 
 ---
 
